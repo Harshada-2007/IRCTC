@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC - Indian Railway Catering and Tourism Corporation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Book train tickets, check PNR status, and explore tourism packages with IRCTC - Indian Railway Catering and Tourism Corporation">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="images/irctc-logo.png" alt="IRCTC Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>IRCTC</h1>
+                        <p>Indian Railway Catering and Tourism Corporation</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <select id="language" aria-label="Select language">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="ta">தமிழ்</option>
+                            <option value="te">తెలుగు</option>
+                            <option value="bn">বাংলা</option>
+                        </select>
+                    </div>
+                    <div class="user-actions">
+                        <a href="#" class="btn btn-outline" id="loginBtn">Login</a>
+                        <a href="#" class="btn btn-primary" id="registerBtn">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Train Tickets</a></li>
+                    <li><a href="#">PNR Status</a></li>
+                    <li><a href="#">Tourism</a></li>
+                    <li><a href="#">Hotels</a></li>
+                    <li><a href="#">Flights</a></li>
+                    <li><a href="#">Buses</a></li>
+                    <li><a href="#">Holidays</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="btn-icon" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn-icon" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Book Your Journey with IRCTC</h2>
+                    <p>Fast, secure, and convenient train ticket booking</p>
+                </div>
+                <div class="booking-card">
+                    <div class="booking-tabs">
+                        <button class="tab-btn active" data-tab="train">Train Tickets</button>
+                        <button class="tab-btn" data-tab="pnr">PNR Status</button>
+                        <button class="tab-btn" data-tab="trains">Train Info</button>
+                    </div>
+                    <div class="tab-content active" id="train-tab">
+                        <form id="booking-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="from">From</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <input type="text" id="from" placeholder="Enter city or station">
+                                    </div>
+                                </div>
+                                <button type="button" class="swap-btn" aria-label="Swap stations">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                                <div class="form-group">
+                                    <label for="to">To</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <input type="text" id="to" placeholder="Enter city or station">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date">Date of Journey</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <input type="date" id="date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="class">Travel Class</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-train"></i>
+                                        <select id="class">
+                                            <option value="">All Classes</option>
+                                            <option value="1A">AC First Class (1A)</option>
+                                            <option value="2A">AC 2 Tier (2A)</option>
+                                            <option value="3A">AC 3 Tier (3A)</option>
+                                            <option value="SL">Sleeper (SL)</option>
+                                            <option value="2S">Second Sitting (2S)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quota">Quota</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-ticket-alt"></i>
+                                        <select id="quota">
+                                            <option value="GN">General</option>
+                                            <option value="TQ">Tatkal</option>
+                                            <option value="LD">Ladies</option>
+                                            <option value="PH">Divyaang</option>
+                                            <option value="SR">Senior Citizen</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="flexible-dates">
+                                    <label for="flexible-dates">Flexible with date</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-search">
+                                <i class="fas fa-search"></i> Search Trains
+                            </button>
+                        </form>
+                    </div>
+                    <div class="tab-content" id="pnr-tab">
+                        <form id="pnr-form">
+                            <div class="form-group">
+                                <label for="pnr-number">PNR Number</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-ticket-alt"></i>
+                                    <input type="text" id="pnr-number" placeholder="Enter 10-digit PNR number">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-search">
+                                <i class="fas fa-search"></i> Check Status
+                            </button>
+                        </form>
+                    </div>
+                    <div class="tab-content" id="trains-tab">
+                        <form id="trains-form">
+                            <div class="form-group">
+                                <label for="train-number">Train Number/Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-train"></i>
+                                    <input type="text" id="train-number" placeholder="Enter train number or name">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-search">
+                                <i class="fas fa-search"></i> Get Train Info
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Book with IRCTC?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Fast Booking</h3>
+                        <p>Book your tickets in seconds with our optimized booking process</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Multiple secure payment options with end-to-end encryption</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <h3>Zero Fees</h3>
+                        <p>No additional service fees on any train ticket bookings</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer support for all your queries</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular-routes">
+            <div class="container">
+                <h2 class="section-title">Popular Train Routes</h2>
+                <div class="routes-grid">
+                    <div class="route-card">
+                        <div class="route-info">
+                            <div class="route-cities">
+                                <span>Delhi</span>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                                <span>Mumbai</span>
+                            </div>
+                            <div class="route-meta">
+                                <span><i class="fas fa-train"></i> 25+ trains</span>
+                                <span><i class="fas fa-clock"></i> From 16h 10m</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Trains</a>
+                    </div>
+                    <div class="route-card">
+                        <div class="route-info">
+                            <div class="route-cities">
+                                <span>Chennai</span>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                                <span>Bangalore</span>
+                            </div>
+                            <div class="route-meta">
+                                <span><i class="fas fa-train"></i> 15+ trains</span>
+                                <span><i class="fas fa-clock"></i> From 5h 20m</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Trains</a>
+                    </div>
+                    <div class="route-card">
+                        <div class="route-info">
+                            <div class="route-cities">
+                                <span>Kolkata</span>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                                <span>Delhi</span>
+                            </div>
+                            <div class="route-meta">
+                                <span><i class="fas fa-train"></i> 20+ trains</span>
+                                <span><i class="fas fa-clock"></i> From 17h 15m</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Trains</a>
+                    </div>
+                    <div class="route-card">
+                        <div class="route-info">
+                            <div class="route-cities">
+                                <span>Mumbai</span>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                                <span>Goa</span>
+                            </div>
+                            <div class="route-meta">
+                                <span><i class="fas fa-train"></i> 10+ trains</span>
+                                <span><i class="fas fa-clock"></i> From 8h 40m</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Trains</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tourism">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Explore India with IRCTC Tourism</h2>
+                    <a href="#" class="view-all">View All Packages <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tourism-slider">
+                    <button class="slider-arrow prev" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="tourism-cards">
+                        <div class="tourism-card">
+                            <div class="card-image">
+                                <img src="images/taj-mahal.jpg" alt="Taj Mahal, Agra">
+                                <div class="card-tag">Popular</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Golden Triangle Tour</h3>
+                                <p class="tour-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                                <p class="tour-places">Delhi - Agra - Jaipur</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="current">₹15,999</span>
+                                        <span class="original">₹18,999</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tourism-card">
+                            <div class="card-image">
+                                <img src="images/kerala.jpg" alt="Kerala Backwaters">
+                                <div class="card-tag">New</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Kerala Backwaters</h3>
+                                <p class="tour-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                                <p class="tour-places">Kochi - Munnar - Alleppey</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="current">₹14,499</span>
+                                        <span class="original">₹16,999</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tourism-card">
+                            <div class="card-image">
+                                <img src="images/varanasi.jpg" alt="Varanasi Ghats">
+                            </div>
+                            <div class="card-content">
+                                <h3>Spiritual Varanasi</h3>
+                                <p class="tour-duration"><i class="fas fa-clock"></i> 3 Days / 2 Nights</p>
+                                <p class="tour-places">Varanasi - Sarnath</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="current">₹8,999</span>
+                                        <span class="original">₹10,499</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-arrow next" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-download">
+            <div class="container">
+                <div class="app-content">
+                    <div class="app-text">
+                        <h2>Download the IRCTC Mobile App</h2>
+                        <p>Book tickets, check PNR status, and get instant updates on your mobile device</p>
+                        <div class="app-buttons">
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                <span>
+                                    <small>GET IT ON</small>
+                                    Google Play
+                                </span>
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                <span>
+                                    <small>Download on the</small>
+                                    App Store
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="app-image">
+                        <img src="images/app-mockup.png" alt="IRCTC Mobile App">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h3>IRCTC</h3>
+                    <p>Indian Railway Catering and Tourism Corporation Ltd. is a public sector enterprise under the Ministry of Railways.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Train Tickets</a></li>
+                        <li><a href="#">PNR Status</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                        <li><a href="#">Refund Rules</a></li>
+                        <li><a href="#">IRCTC Tourism</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> IRCTC Corporate Office, New Delhi</li>
+                        <li><i class="fas fa-phone-alt"></i> 1800-110-139 (Toll Free)</li>
+                        <li><i class="fas fa-envelope"></i> care@irctc.co.in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 IRCTC. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fas fa-wallet"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2>Login to IRCTC</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Enter your username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <div class="form-footer">
+                    <a href="#">Forgot Password?</a>
+                    <span>|</span>
+                    <a href="#">New User? Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
